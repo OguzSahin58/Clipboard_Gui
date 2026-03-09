@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/qt/qml/clipboard_gui">
+        <file>main.qml</file>
+    </qresource>
+</RCC>
