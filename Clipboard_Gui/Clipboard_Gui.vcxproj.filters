@@ -21,6 +21,9 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Databases">
+      <UniqueIdentifier>{0ee60a87-e428-4c29-8363-fcc16dfc2946}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,12 @@
     <ClCompile Include="clipboardmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\shell.c">
+      <Filter>Databases</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3.c">
+      <Filter>Databases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="clipboardmodel.h">
@@ -49,5 +58,16 @@
     <QtMoc Include="clipboardmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3.h">
+      <Filter>Databases</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3ext.h">
+      <Filter>Databases</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
