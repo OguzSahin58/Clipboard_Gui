@@ -4,15 +4,9 @@
 #include <QDebug>
 #include <qfile.h>
 
-Database::Database()
+Database::Database(QObject* parent)
+    : QObject(parent), db(nullptr)
 {
-    db = nullptr;
-}
-
-Database::~Database()
-{
-    if (db)
-        sqlite3_close(db);
 }
 
 bool Database::open(const QString& path)
@@ -62,4 +56,19 @@ void Database::insertText(const QString& text)
 
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
+}
+
+void Database::loadHistory()
+{
+    QList<QString> history;
+    const char* sql = "SELECT content FROM clipboard_history ORDER BY created_at DESC;";
+    sqlite3_stmt* stmt;
+    sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    while (sqlite3_step(stmt) == SQLITE_ROW)
+    {
+        const unsigned char* text = sqlite3_column_text(stmt, 0);
+        history.append(QString::fromUtf8(reinterpret_cast<const char*>(text)));
+    }
+    sqlite3_finalize(stmt);
+	emit historyLoaded(history);
 }

@@ -58,11 +58,11 @@
     <QtMoc Include="clipboardmanager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="database.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="database.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3.h">
       <Filter>Databases</Filter>
     </ClInclude>

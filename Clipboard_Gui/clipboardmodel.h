@@ -20,8 +20,11 @@ public:
     QVariant data(const QModelIndex& index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
 
+    
+
 public slots:
     void addClipboardItem(QString text);
+    void loadFromHistory(QStringList history);
 
 private:
     QStringList items;

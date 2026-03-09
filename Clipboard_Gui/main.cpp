@@ -9,17 +9,19 @@
 
 int main(int argc, char* argv[])
 {
-
+    QGuiApplication app(argc, argv);
     Database db; 
     db.open("database.db");
     db.createTable();
 
-    QGuiApplication app(argc, argv);
 
     ClipboardManager manager;
     ClipboardModel model;
 
-	// mode.loadFromDatabase(db.loadHistory());
+    QObject::connect(&db,
+        &Database::historyLoaded,
+        &model,
+        &ClipboardModel::loadFromHistory);
 
     QObject::connect(&manager,
         &ClipboardManager::newClipboardText,
@@ -32,6 +34,8 @@ int main(int argc, char* argv[])
         {
             db.insertText(text);
         });
+
+    db.loadHistory();
 
     QQmlApplicationEngine engine;
 

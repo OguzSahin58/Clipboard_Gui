@@ -34,3 +34,10 @@ void ClipboardModel::addClipboardItem(QString text)
     items.prepend(text);
     endInsertRows();
 }
+
+void ClipboardModel::loadFromHistory(QStringList history)
+{
+    beginResetModel();
+    items = history;
+    endResetModel();
+}

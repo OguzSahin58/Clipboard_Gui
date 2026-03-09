@@ -125,7 +125,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3.h" />
     <ClInclude Include="..\..\..\..\SQLite\sqlite-amalgamation-3430100\sqlite3ext.h" />
-    <ClInclude Include="database.h" />
+    <QtMoc Include="database.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
