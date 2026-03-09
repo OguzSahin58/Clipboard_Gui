@@ -37,6 +37,13 @@ Q_INVOKABLE void ClipboardModel::selectItem(int index)
     emit clipboardItemSelected(item);
 }
 
+Q_INVOKABLE void ClipboardModel::clearHistory()
+{
+    beginResetModel();
+    items.clear();          // clear the internal member variable
+    endResetModel();
+    emit deleteAllRequested();
+}
 void ClipboardModel::addClipboardItem(QString text)
 {
     beginInsertRows(QModelIndex(), 0, 0);

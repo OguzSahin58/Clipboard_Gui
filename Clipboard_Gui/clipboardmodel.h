@@ -21,9 +21,11 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE void selectItem(int index);
+	Q_INVOKABLE void clearHistory();
 
 signals:
     void clipboardItemSelected(QString text);
+    void deleteAllRequested();
 
 public slots:
     void addClipboardItem(QString text);

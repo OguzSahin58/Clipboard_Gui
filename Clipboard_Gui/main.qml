@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 ApplicationWindow {
     visible: true
@@ -7,28 +8,57 @@ ApplicationWindow {
     height: 600
     title: "Clipboard Manager"
 
-    ListView {
+    ColumnLayout {
         anchors.fill: parent
-        model: clipboardModel
 
-        delegate: Rectangle {
-            width: parent.width
-            height: 50
-            border.width: 1
+        ListView {
+            id: listView
 
-            Text {
-                anchors.centerIn: parent
-                text: model.text
-                elide: Text.ElideRight
-            }
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-            MouseArea {
-                anchors.fill: parent
+            model: clipboardModel
 
-                onClicked: {
-                    clipboardModel.selectItem(index)
+            delegate: Rectangle {
+                width: parent.width
+                height: 50
+                border.width: 1
+
+                Text {
+                    anchors.centerIn: parent
+                    text: model.text
+                    elide: Text.ElideRight
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: {
+                        clipboardModel.selectItem(index)
+                    }
                 }
             }
+        }
+
+        Button {
+            text: "Delete Clipboard History"
+            Layout.fillWidth: true
+
+            onClicked: {
+                confirmDeleteDialog.open()
+            }
+        }
+    }
+
+    Dialog {
+        id: confirmDeleteDialog
+        title: "Delete Clipboard History"
+
+        modal: true
+        standardButtons: Dialog.Yes | Dialog.No
+
+        onAccepted: {
+            clipboardModel.clearHistory()
         }
     }
 }

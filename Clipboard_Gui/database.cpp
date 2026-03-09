@@ -72,3 +72,14 @@ void Database::loadHistory()
     sqlite3_finalize(stmt);
 	emit historyLoaded(history);
 }
+
+void Database::deleteAllHistory()
+{
+    const char* sql = "DELETE FROM clipboard_history;";
+    char* err = nullptr;
+    if (sqlite3_exec(db, sql, nullptr, nullptr, &err) != SQLITE_OK)
+    {
+        qDebug() << "SQL error:" << err;
+        sqlite3_free(err);
+    }
+}

@@ -39,6 +39,11 @@ int main(int argc, char* argv[])
         &manager,
         &ClipboardManager::setClipboardText);
 
+    QObject::connect(&model,
+        &ClipboardModel::deleteAllRequested,
+        &db,
+		&Database::deleteAllHistory);
+
     db.loadHistory();
 
     QQmlApplicationEngine engine;

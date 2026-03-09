@@ -25,6 +25,10 @@ public:
 signals:
     void historyLoaded(QStringList items);
 
+public slots:
+
+    void deleteAllHistory();
+
 private:
     sqlite3* db;
 };
