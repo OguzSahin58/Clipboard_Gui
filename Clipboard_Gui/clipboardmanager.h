@@ -19,6 +19,9 @@ signals:
 private slots:
     void onClipboardChanged();
 
+public slots:
+    void setClipboardText(QString text);
+
 private:
     QClipboard* clipboard;
 };

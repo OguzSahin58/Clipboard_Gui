@@ -28,6 +28,15 @@ QHash<int, QByteArray> ClipboardModel::roleNames() const
     };
 }
 
+Q_INVOKABLE void ClipboardModel::selectItem(int index)
+{
+    if (index < 0 || index >= items.size())
+        return;
+
+    const QString item = items.at(index);
+    emit clipboardItemSelected(item);
+}
+
 void ClipboardModel::addClipboardItem(QString text)
 {
     beginInsertRows(QModelIndex(), 0, 0);

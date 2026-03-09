@@ -21,6 +21,14 @@ ApplicationWindow {
                 text: model.text
                 elide: Text.ElideRight
             }
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {
+                    clipboardModel.selectItem(index)
+                }
+            }
         }
     }
 }

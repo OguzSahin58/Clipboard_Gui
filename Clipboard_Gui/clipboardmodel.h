@@ -20,7 +20,10 @@ public:
     QVariant data(const QModelIndex& index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    
+    Q_INVOKABLE void selectItem(int index);
+
+signals:
+    void clipboardItemSelected(QString text);
 
 public slots:
     void addClipboardItem(QString text);

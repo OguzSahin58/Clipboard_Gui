@@ -34,6 +34,10 @@ int main(int argc, char* argv[])
         {
             db.insertText(text);
         });
+    QObject::connect(&model,
+        &ClipboardModel::clipboardItemSelected,
+        &manager,
+        &ClipboardManager::setClipboardText);
 
     db.loadHistory();
 
