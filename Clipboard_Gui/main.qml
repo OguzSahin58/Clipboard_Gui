@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
@@ -59,6 +59,30 @@ ApplicationWindow {
 
         onAccepted: {
             clipboardModel.clearHistory()
+        }
+    }
+
+    // Go to Top Floating Button
+    Button {
+        id: goTopButton
+        text: "↑"
+
+        width: 40
+        height: 40
+
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: 10
+
+        visible: listView.contentY > 100
+
+        background: Rectangle {
+            radius: 20
+            color: "#dddddd"
+        }
+
+        onClicked: {
+            listView.positionViewAtBeginning()
         }
     }
 }
