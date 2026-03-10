@@ -21,12 +21,20 @@ ApplicationWindow {
 
             delegate: Rectangle {
                 width: parent.width
-                height: 50
+                height: textItem.implicitHeight + 16
                 border.width: 1
 
                 Text {
-                    anchors.centerIn: parent
+                    id: textItem
+
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: 8
+
                     text: model.text
+
+                    wrapMode: Text.WordWrap
+                    maximumLineCount: 3
                     elide: Text.ElideRight
                 }
 
